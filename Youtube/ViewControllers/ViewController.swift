@@ -25,6 +25,16 @@ class ViewController: UIViewController {
         
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Get a reference to the video tapped on
+        guard tableView.indexPathForSelectedRow != nil else { return }
+        //Get a reference to detail view controller
+        let selectedVideo = videos[tableView.indexPathForSelectedRow!.row]
+        //Set the video property in detail view controller
+        let VC = segue.destination as! DetailedViewController
+        VC.video = selectedVideo
+    }
 
 
 }
