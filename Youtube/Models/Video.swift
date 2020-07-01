@@ -21,7 +21,7 @@ struct Video: Decodable {
     enum CodingKeys: String, CodingKey {
         case snippet
         case thumbnails
-        case high
+        case maxres
         case resourceId
         
         case published = "publishedAt"
@@ -53,7 +53,7 @@ struct Video: Decodable {
         
         //parse thumbnails
         
-        let highContainer = try thumbnailContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .high)
+        let highContainer = try thumbnailContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .maxres)
         
         self.thumbnail = try  highContainer.decode(String.self, forKey: .thumbnail)
         
